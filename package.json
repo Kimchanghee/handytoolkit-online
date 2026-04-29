@@ -1,0 +1,56 @@
+{
+  "name": "handytools-io",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Online tools hub — 50+ free tools across 8 languages",
+  "scripts": {
+    "dev": "next dev --turbo",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "type-check": "tsc --noEmit",
+    "translate:all": "tsx scripts/translate-all.ts",
+    "cdk": "cdk --app 'tsx infrastructure/cdk-app.ts'",
+    "deploy": "npm run build && npm run cdk -- deploy --all --require-approval never"
+  },
+  "dependencies": {
+    "next": "^15.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "next-intl": "^3.20.0",
+    "@squoosh/lib": "^0.5.3",
+    "pdf-lib": "^1.17.1",
+    "@ffmpeg/ffmpeg": "^0.12.10",
+    "@ffmpeg/util": "^0.12.1",
+    "qrcode": "^1.5.4",
+    "uuid": "^10.0.0",
+    "yaml": "^2.5.0",
+    "papaparse": "^5.4.1",
+    "highlight.js": "^11.10.0",
+    "marked": "^14.0.0",
+    "exifreader": "^4.23.0",
+    "tailwindcss": "^3.4.13",
+    "lucide-react": "^0.452.0",
+    "clsx": "^2.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.7.5",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@types/uuid": "^10.0.0",
+    "@types/papaparse": "^5.3.14",
+    "typescript": "^5.6.3",
+    "tsx": "^4.19.1",
+    "eslint": "^9.12.0",
+    "eslint-config-next": "^15.0.0",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.47",
+    "aws-cdk": "^2.160.0",
+    "aws-cdk-lib": "^2.160.0",
+    "constructs": "^10.4.2",
+    "@aws-sdk/client-bedrock-runtime": "^3.665.0"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

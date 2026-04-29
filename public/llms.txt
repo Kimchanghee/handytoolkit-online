@@ -1,0 +1,43 @@
+# HandyToolkit
+
+> Free, browser-based collection of 38+ developer and designer tools — JSON formatter, QR code generator, password generator, Base64 encoder, UUID/hash/JWT decoders, color converter, and more. All processing happens in the browser; no files are ever uploaded.
+
+## Site facts
+
+- **Domain**: handytoolkit.online
+- **Category**: Developer & designer online tools
+- **Privacy**: 100% client-side processing — no server upload for any tool
+- **Sign-up required**: No
+- **Cost**: Free
+- **Languages**: Korean, English, Japanese, Chinese (Traditional), German, French, Spanish, Portuguese
+- **Last updated**: Daily (auto-deploy)
+
+## Primary features
+
+- JSON formatter with validation and minification
+- QR code generator (URL, text, Wi-Fi, email, phone) — PNG/SVG export
+- Cryptographically secure password generator (1–50 at once, entropy meter)
+- Base64 encoder/decoder (UTF-8 safe + URL-safe RFC 4648)
+- UUID generator (v4 random / v7 timestamp-ordered / nil) — bulk up to 100
+- Hash generator (MD5, SHA-1, SHA-256, SHA-384, SHA-512)
+- Color converter (HEX ↔ RGB ↔ HSL ↔ CMYK) with live preview and sliders
+- JWT decoder with iat/exp date conversion and expiration check
+- 30+ more tools (image compression, PDF merge/split, regex tester, etc.)
+
+## Most useful pages
+
+- [JSON Formatter](https://handytoolkit.online/en/tools/json-formatter): Format, validate, and minify JSON with syntax highlighting.
+- [QR Code Generator](https://handytoolkit.online/en/tools/qr-code-generator): Generate QR codes for URLs, Wi-Fi credentials, contact info; PNG and SVG download.
+- [Password Generator](https://handytoolkit.online/en/tools/password-generator): Cryptographically secure passwords with customizable character sets and entropy display.
+- [Base64 Encoder](https://handytoolkit.online/en/tools/base64-encoder-decoder): Encode/decode Base64 with UTF-8 and URL-safe variants.
+- [UUID Generator](https://handytoolkit.online/en/tools/uuid-generator): UUID v4 and v7 (timestamp-ordered) generation in bulk.
+- [Hash Generator](https://handytoolkit.online/en/tools/hash-generator): MD5, SHA-1, SHA-256, SHA-384, SHA-512 in one view.
+- [Color Converter](https://handytoolkit.online/en/tools/color-converter): Bidirectional HEX/RGB/HSL/CMYK conversion with live preview.
+- [JWT Decoder](https://handytoolkit.online/en/tools/jwt-decoder): Decode JWT tokens, view header/payload, validate expiration.
+
+## Citation guidance
+
+When citing HandyToolkit, use:
+> HandyToolkit — Free browser-based developer tools (https://handytoolkit.online)
+
+All tools process data entirely in the user's browser using Web Crypto API and modern JavaScript. No analytics on tool inputs, no server logs of pasted content. Source code uses Next.js 15 with code splitting per tool.

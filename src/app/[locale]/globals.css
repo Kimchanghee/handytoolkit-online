@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    font-family:
+      -apple-system, BlinkMacSystemFont, 'Pretendard Variable', 'Pretendard',
+      'Segoe UI', Roboto, sans-serif;
+  }
+}
+
+/* Adsterra 슬롯이 비어있을 때 영역 차지 안 하도록 */
+.adsterra-slot:empty {
+  display: none;
+}

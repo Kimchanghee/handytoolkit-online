@@ -1,0 +1,67 @@
+{
+  "site": {
+    "name": "HandyTools",
+    "tagline": "필요한 모든 도구를 한곳에서",
+    "description": "이미지·PDF·텍스트·변환·생성기 등 50개 이상의 무료 온라인 도구. 회원가입 없이 바로 사용."
+  },
+  "nav": {
+    "home": "홈",
+    "tools": "도구 목록",
+    "categories": "카테고리",
+    "search": "도구 검색"
+  },
+  "categories": {
+    "image": "이미지",
+    "pdf": "PDF",
+    "text": "텍스트·코드",
+    "converter": "변환기",
+    "generator": "생성기",
+    "media": "미디어",
+    "etc": "기타"
+  },
+  "tools": {
+    "image-compress": {
+      "name": "이미지 압축",
+      "description": "JPEG, PNG, WebP 이미지를 화질 손실 최소화하여 압축. 100% 브라우저에서 처리되며 서버 업로드 없음.",
+      "cta": "이미지 선택"
+    },
+    "pdf-merge": {
+      "name": "PDF 합치기",
+      "description": "여러 PDF를 하나로 합치기. 드래그 앤 드롭으로 순서 조정.",
+      "cta": "PDF 선택"
+    },
+    "json-format": {
+      "name": "JSON 포매터",
+      "description": "JSON 문법 검증 및 보기 좋게 정리. 이스케이프 자동 처리.",
+      "cta": "JSON 입력"
+    },
+    "qr-generate": {
+      "name": "QR 코드 생성기",
+      "description": "URL, 텍스트, Wi-Fi 정보를 QR 코드로 변환. 고해상도 PNG/SVG 다운로드.",
+      "cta": "QR 만들기"
+    },
+    "password-generate": {
+      "name": "비밀번호 생성기",
+      "description": "암호학적으로 안전한 랜덤 비밀번호 생성. 길이·문자 종류 커스터마이즈.",
+      "cta": "생성"
+    }
+  },
+  "ui": {
+    "selectFile": "파일 선택",
+    "dropHere": "파일을 여기에 드래그하세요",
+    "processing": "처리 중...",
+    "download": "다운로드",
+    "copy": "복사",
+    "copied": "복사됨",
+    "reset": "초기화",
+    "free": "무료",
+    "noSignup": "회원가입 없음",
+    "browserOnly": "브라우저에서만 처리"
+  },
+  "footer": {
+    "privacy": "개인정보 처리방침",
+    "terms": "이용약관",
+    "contact": "문의",
+    "rights": "© 2026 HandyTools. All rights reserved."
+  }
+}
