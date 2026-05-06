@@ -16,6 +16,29 @@ const FEATURED_TOOLS = [
   { id: 'password-generate', category: 'generator', icon: KeyRoundIcon },
 ];
 
+function buildAmazonUrl(keyword: string) {
+  const url = new URL('https://www.amazon.com/s');
+  url.searchParams.set('k', keyword);
+  url.searchParams.set('tag', 'amazonfi00681-20');
+  url.searchParams.set('linkCode', 'll2');
+  return url.toString();
+}
+
+function buildCoupangUrl(keyword: string) {
+  const custom = process.env.NEXT_PUBLIC_COUPANG_PARTNER_URL;
+  if (custom) return custom;
+  const url = new URL('https://www.coupang.com/np/search');
+  url.searchParams.set('component', '');
+  url.searchParams.set('q', keyword);
+  return url.toString();
+}
+
+function buildAliExpressUrl(keyword: string) {
+  const custom = process.env.NEXT_PUBLIC_ALIEXPRESS_PARTNER_URL;
+  if (custom) return custom;
+  return `https://www.aliexpress.com/w/wholesale-${encodeURIComponent(keyword.replace(/\s+/g, '-'))}.html`;
+}
+
 export default async function Home({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
@@ -90,6 +113,27 @@ function HomeContent({ locale }: { locale: string }) {
 
       {/* Adsterra — Social Bar (모바일 하단 고정) */}
       <AdsterraSlot type="social" width={0} height={0} />
+
+      <section className="container mx-auto max-w-6xl px-4 py-10">
+        <div className="rounded-xl border bg-white p-5">
+          <h2 className="mb-2 text-xl font-semibold">Partner Picks</h2>
+          <p className="mb-4 text-sm text-slate-600">개발/생산성 도구 관련 추천 링크입니다.</p>
+          <div className="grid gap-3 sm:grid-cols-3">
+            <a className="rounded-lg border border-amber-300 bg-amber-50 p-4 hover:border-amber-400" href={buildAmazonUrl('mechanical keyboard')} target="_blank" rel="sponsored noopener noreferrer">
+              <p className="text-xs font-semibold uppercase tracking-wide text-amber-700">Amazon</p>
+              <p className="mt-1 text-sm">Mechanical Keyboard</p>
+            </a>
+            <a className="rounded-lg border border-blue-300 bg-blue-50 p-4 hover:border-blue-400" href={buildCoupangUrl('노트북 거치대')} target="_blank" rel="sponsored noopener noreferrer">
+              <p className="text-xs font-semibold uppercase tracking-wide text-blue-700">Coupang</p>
+              <p className="mt-1 text-sm">노트북 거치대</p>
+            </a>
+            <a className="rounded-lg border border-rose-300 bg-rose-50 p-4 hover:border-rose-400" href={buildAliExpressUrl('usb hub')} target="_blank" rel="sponsored noopener noreferrer">
+              <p className="text-xs font-semibold uppercase tracking-wide text-rose-700">AliExpress</p>
+              <p className="mt-1 text-sm">USB Hub</p>
+            </a>
+          </div>
+        </div>
+      </section>
 
       {/* Footer */}
       <footer className="border-t bg-white py-8">
