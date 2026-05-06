@@ -1,32 +1,29 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
-import dynamic from 'next/dynamic';
+import nextDynamic from 'next/dynamic';
 import Link from 'next/link';
 import AdsterraSlot from '@/components/AdsterraSlot';
-import { TOOLS, getAllSlugs, getToolBySlug } from '@/tools/registry';
+import { TOOLS, getToolBySlug } from '@/tools/registry';
 import { locales, type Locale } from '@/i18n/config';
 
 interface Props {
   params: Promise<{ locale: string; tool: string }>;
 }
 
-export async function generateStaticParams() {
-  const slugs = getAllSlugs();
-  return locales.flatMap((locale) => slugs.map((tool) => ({ locale, tool })));
-}
+export const dynamic = 'force-dynamic';
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, tool } = await params;
   const meta = getToolBySlug(tool);
   if (!meta) return {};
-  const t = await getTranslations({ locale, namespace: `tools.${meta.id}` });
+  const t = await getTranslations({ locale });
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://handytools.io';
   let name = '';
   let description = '';
   try {
-    name = t('name');
-    description = t('description');
+    name = t(`tools.${meta.id}.name`);
+    description = t(`tools.${meta.id}.description`);
   } catch {
     name = meta.slug.replace(/-/g, ' ');
     description = `Free online ${name}. Browser-only, no signup required.`;
@@ -43,15 +40,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 // 도구별 클라이언트 컴포넌트 동적 로드 (코드 스플리팅)
-const TOOL_COMPONENTS: Record<string, ReturnType<typeof dynamic>> = {
-  'json-formatter': dynamic(() => import('@/tools/json-formatter/JsonFormatter')),
-  'qr-code-generator': dynamic(() => import('@/tools/qr-generator/QrGenerator')),
-  'password-generator': dynamic(() => import('@/tools/password-generator/PasswordGenerator')),
-  'base64-encoder-decoder': dynamic(() => import('@/tools/base64/Base64Tool')),
-  'uuid-generator': dynamic(() => import('@/tools/uuid-generator/UuidGenerator')),
-  'hash-generator': dynamic(() => import('@/tools/hash-generator/HashGenerator')),
-  'color-converter': dynamic(() => import('@/tools/color-converter/ColorConverter')),
-  'jwt-decoder': dynamic(() => import('@/tools/jwt-decoder/JwtDecoder')),
+const TOOL_COMPONENTS: Record<string, ReturnType<typeof nextDynamic>> = {
+  'json-formatter': nextDynamic(() => import('@/tools/json-formatter/JsonFormatter')),
+  'qr-code-generator': nextDynamic(() => import('@/tools/qr-generator/QrGenerator')),
+  'password-generator': nextDynamic(() => import('@/tools/password-generator/PasswordGenerator')),
+  'base64-encoder-decoder': nextDynamic(() => import('@/tools/base64/Base64Tool')),
+  'uuid-generator': nextDynamic(() => import('@/tools/uuid-generator/UuidGenerator')),
+  'hash-generator': nextDynamic(() => import('@/tools/hash-generator/HashGenerator')),
+  'color-converter': nextDynamic(() => import('@/tools/color-converter/ColorConverter')),
+  'jwt-decoder': nextDynamic(() => import('@/tools/jwt-decoder/JwtDecoder')),
 };
 
 export default async function ToolPage({ params }: Props) {

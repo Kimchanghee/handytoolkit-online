@@ -19,6 +19,6 @@
       "@shared/*": ["../../shared/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules", "infrastructure", "cdk.out"]
+  "include": ["next-env.d.ts", "src/**/*.ts", "src/**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules", "infrastructure", "cdk.out", "scripts"]
 }

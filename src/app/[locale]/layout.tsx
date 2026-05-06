@@ -4,7 +4,6 @@ import { getMessages, getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import Script from 'next/script';
 import { locales, type Locale } from '@/i18n/config';
-import './globals.css';
 
 interface Props {
   children: React.ReactNode;
@@ -107,30 +106,25 @@ export default async function LocaleLayout({ children, params }: Props) {
   };
 
   return (
-    <html lang={locale}>
-      <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(ldJson) }}
-        />
-        <meta name="theme-color" content="#10b981" />
-        <link rel="preconnect" href="https://www.profitableratecpm.com" />
-        <link rel="dns-prefetch" href="//www.profitableratecpm.com" />
-      </head>
-      <body className="bg-slate-50 text-slate-900 antialiased">
-        <NextIntlClientProvider messages={messages}>
-          {children}
-        </NextIntlClientProvider>
+    <>
+      <Script
+        id="handytoolkit-ldjson"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(ldJson) }}
+      />
+      <NextIntlClientProvider locale={locale} messages={messages}>
+        {children}
+      </NextIntlClientProvider>
 
-        {/* Popunder — 세션당 1회 (Adsterra 권장 위치: body 끝) */}
-        {popunderKey && (
-          <Script
-            id="adsterra-popunder"
-            strategy="afterInteractive"
-            src={`//pl${popunderKey}.profitableratecpm.com/${popunderKey}/invoke.js`}
-          />
-        )}
-      </body>
-    </html>
+      {/* Popunder — 세션당 1회 (Adsterra 권장 위치: body 끝) */}
+      {popunderKey && (
+        <Script
+          id="adsterra-popunder"
+          strategy="afterInteractive"
+          src={`//pl${popunderKey}.profitableratecpm.com/${popunderKey}/invoke.js`}
+        />
+      )}
+    </>
   );
 }
