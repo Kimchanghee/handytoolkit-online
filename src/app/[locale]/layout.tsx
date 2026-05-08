@@ -4,6 +4,7 @@ import { getMessages, getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import Script from 'next/script';
 import { locales, type Locale } from '@/i18n/config';
+import './globals.css';
 
 interface Props {
   children: React.ReactNode;
