@@ -22,9 +22,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     metadataBase: new URL(baseUrl),
-    title: { default: `${t('name')} — ${t('tagline')}`, template: `%s | ${t('name')}` },
+    title: { default: `${t('name')} ??${t('tagline')}`, template: `%s | ${t('name')}` },
     description: t('description'),
-    keywords: ['online tools', 'free tools', 'JSON formatter', 'QR generator', 'password generator', 'developer tools', '무료 도구', '온라인 도구'],
+    keywords: ['online tools', 'free tools', 'JSON formatter', 'QR generator', 'password generator', 'developer tools', '臾대즺 ?꾧뎄', '?⑤씪???꾧뎄'],
     alternates: {
       canonical: `/${locale}`,
       languages: Object.fromEntries(locales.map((l) => [l, `/${l}`])),
@@ -64,7 +64,7 @@ export default async function LocaleLayout({ children, params }: Props) {
   const messages = await getMessages();
   const popunderKey = process.env.NEXT_PUBLIC_ADSTERRA_POPUNDER_KEY;
 
-  // JSON-LD 구조화 데이터 (SEO + AEO 핵심)
+  // JSON-LD 援ъ“???곗씠??(SEO + AEO ?듭떖)
   const ldJson = {
     '@context': 'https://schema.org',
     '@graph': [
@@ -82,7 +82,7 @@ export default async function LocaleLayout({ children, params }: Props) {
         name: 'HandyToolkit',
         url: 'https://handytoolkit.online',
         publisher: { '@id': 'https://handytoolkit.online#org' },
-        inLanguage: ['ko', 'en', 'ja', 'zh', 'de', 'fr', 'es', 'pt'],
+        inLanguage: 'ko-KR',
         potentialAction: {
           '@type': 'SearchAction',
           target: 'https://handytoolkit.online/search?q={search_term_string}',
@@ -118,7 +118,7 @@ export default async function LocaleLayout({ children, params }: Props) {
         {children}
       </NextIntlClientProvider>
 
-      {/* Popunder — 세션당 1회 (Adsterra 권장 위치: body 끝) */}
+      {/* Popunder ???몄뀡??1??(Adsterra 沅뚯옣 ?꾩튂: body ?? */}
       {popunderKey && (
         <Script
           id="adsterra-popunder"
