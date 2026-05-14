@@ -14,6 +14,8 @@ interface Props {
   label?: string;
 }
 
+const DISPLAY_ADS_ENABLED = process.env.NEXT_PUBLIC_ENABLE_DISPLAY_ADS === 'true';
+
 const KEYS = {
   banner: process.env.NEXT_PUBLIC_ADSTERRA_BANNER_KEY!,
   social: process.env.NEXT_PUBLIC_ADSTERRA_SOCIAL_KEY!,
@@ -35,7 +37,7 @@ export default function AdsterraSlot({
 
   // Native banner / Multitag — DOM에 invoke.js 삽입
   useEffect(() => {
-    if (type === 'directlink') return;
+    if (!DISPLAY_ADS_ENABLED || type === 'directlink') return;
     if (!ref.current) return;
     const key = KEYS[type as keyof typeof KEYS];
     if (!key) return;
@@ -81,6 +83,8 @@ export default function AdsterraSlot({
       return () => window.removeEventListener('scroll', onScroll);
     }
   }, [type, width, height, refreshOnScroll]);
+
+  if (!DISPLAY_ADS_ENABLED && type !== 'directlink') return null;
 
   // Direct Link 버튼 — 외부 이동 + sponsored
   if (type === 'directlink') {

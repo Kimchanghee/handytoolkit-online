@@ -62,6 +62,7 @@ export default async function LocaleLayout({ children, params }: Props) {
   const { locale } = await params;
   if (!locales.includes(locale as Locale)) notFound();
   const messages = await getMessages();
+  const displayAdsEnabled = process.env.NEXT_PUBLIC_ENABLE_DISPLAY_ADS === 'true';
   const popunderKey = process.env.NEXT_PUBLIC_ADSTERRA_POPUNDER_KEY;
 
   // JSON-LD 援ъ“???곗씠??(SEO + AEO ?듭떖)
@@ -119,7 +120,7 @@ export default async function LocaleLayout({ children, params }: Props) {
       </NextIntlClientProvider>
 
       {/* Popunder ???몄뀡??1??(Adsterra 沅뚯옣 ?꾩튂: body ?? */}
-      {popunderKey && (
+      {displayAdsEnabled && popunderKey && (
         <Script
           id="adsterra-popunder"
           strategy="afterInteractive"
