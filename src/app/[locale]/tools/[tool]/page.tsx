@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const meta = getToolBySlug(tool);
   if (!meta) return {};
   const t = await getTranslations({ locale });
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://handytools.io';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://handytoolkit.online';
   let name = '';
   let description = '';
   try {

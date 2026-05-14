@@ -9,7 +9,7 @@ type QrType = 'text' | 'url' | 'wifi' | 'email' | 'tel';
 export default function QrGenerator() {
   const t = useTranslations('ui');
   const [type, setType] = useState<QrType>('url');
-  const [text, setText] = useState('https://handytools.io');
+  const [text, setText] = useState('https://handytoolkit.online');
   const [size, setSize] = useState(300);
   const [margin, setMargin] = useState(2);
   const [fg, setFg] = useState('#000000');
