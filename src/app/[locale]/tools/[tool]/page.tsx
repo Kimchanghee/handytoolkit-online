@@ -3,7 +3,6 @@ import { notFound } from 'next/navigation';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import nextDynamic from 'next/dynamic';
 import Link from 'next/link';
-import AdsterraSlot from '@/components/AdsterraSlot';
 import { TOOLS, getToolBySlug } from '@/tools/registry';
 import { locales, type Locale } from '@/i18n/config';
 
@@ -103,11 +102,6 @@ export default async function ToolPage({ params }: Props) {
           </span>
         </div>
 
-        {/* 상단 광고 */}
-        <div className="my-6">
-          <AdsterraSlot type="banner" width={728} height={90} />
-        </div>
-
         {/* 도구 컴포넌트 */}
         {Component ? (
           <Component />
@@ -145,12 +139,6 @@ export default async function ToolPage({ params }: Props) {
           </section>
         )}
 
-        {/* 하단 광고 + Social Bar */}
-        <div className="my-8">
-          <AdsterraSlot type="banner" width={728} height={90} refreshOnScroll />
-        </div>
-        <AdsterraSlot type="push" width={0} height={0} />
-        <AdsterraSlot type="social" width={0} height={0} />
       </div>
     </main>
   );

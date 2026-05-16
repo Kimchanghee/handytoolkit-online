@@ -2,7 +2,6 @@
 
 import { useState, useCallback, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
-import AdsterraSlot from '@/components/AdsterraSlot';
 
 const SETS = {
   upper: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
@@ -153,8 +152,6 @@ export default function PasswordGenerator() {
           </div>
         </div>
       </div>
-
-      <AdsterraSlot type="banner" width={728} height={90} />
 
       <div className="grid gap-2">
         {results.map((pwd, idx) => (

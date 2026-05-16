@@ -2,7 +2,6 @@
 
 import { useState, useMemo } from 'react';
 import { useTranslations } from 'next-intl';
-import AdsterraSlot from '@/components/AdsterraSlot';
 
 export default function JsonFormatter() {
   const t = useTranslations('ui');
@@ -92,7 +91,6 @@ export default function JsonFormatter() {
       </div>
 
       {/* 광고: 결과 영역 아래 Native Banner */}
-      <AdsterraSlot type="banner" width={728} height={90} refreshOnScroll />
 
       {result.ok && minified && (
         <div className="rounded-lg border bg-slate-50 p-4">

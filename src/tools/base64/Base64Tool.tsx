@@ -2,7 +2,6 @@
 
 import { useState, useMemo } from 'react';
 import { useTranslations } from 'next-intl';
-import AdsterraSlot from '@/components/AdsterraSlot';
 
 type Mode = 'encode' | 'decode';
 
@@ -128,8 +127,6 @@ export default function Base64Tool() {
           </div>
         </div>
       </div>
-
-      <AdsterraSlot type="banner" width={728} height={90} refreshOnScroll />
     </div>
   );
 }

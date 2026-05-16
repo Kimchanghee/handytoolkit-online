@@ -2,7 +2,6 @@
 
 import { useState, useCallback } from 'react';
 import { useTranslations } from 'next-intl';
-import AdsterraSlot from '@/components/AdsterraSlot';
 
 type Version = 'v4' | 'v7' | 'nil';
 
@@ -114,8 +113,6 @@ export default function UuidGenerator() {
           v4 = random · v7 = timestamp-ordered (sortable) · nil = all zeros
         </p>
       </div>
-
-      <AdsterraSlot type="banner" width={728} height={90} />
 
       <div className="grid gap-2">
         {list.map((uuid, idx) => {

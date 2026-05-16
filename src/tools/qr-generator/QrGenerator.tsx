@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { useTranslations } from 'next-intl';
-import AdsterraSlot from '@/components/AdsterraSlot';
 
 type QrType = 'text' | 'url' | 'wifi' | 'email' | 'tel';
 
@@ -196,7 +195,6 @@ export default function QrGenerator() {
       </div>
 
       <div className="lg:col-span-2">
-        <AdsterraSlot type="banner" width={728} height={90} refreshOnScroll />
       </div>
     </div>
   );

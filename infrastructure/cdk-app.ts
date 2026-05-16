@@ -13,7 +13,7 @@ new BaseStaticSiteStack(app, 'HandyToolsStack', {
   buildOutputDir: '../.next/standalone', // Next.js standalone 빌드
   languages: ['ko', 'en', 'ja', 'zh', 'de', 'fr', 'es', 'pt'],
   additionalDomains: [],
-  description: 'HandyTools — Online Tools Hub (Adsterra-monetized)',
+  description: 'HandyTools — Online Tools Hub',
   tags: {
     Project: 'handytools-io',
     Owner: 'k931103@gmail.com',

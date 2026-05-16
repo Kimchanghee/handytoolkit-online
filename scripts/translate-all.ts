@@ -17,7 +17,6 @@ const SOURCE_LOCALE = defaultLocale;
 const DOMAIN_CONTEXT = 'online tools website (image, PDF, text, converter, generator)';
 const GLOSSARY = {
   HandyTools: 'HandyTools',
-  Adsterra: 'Adsterra',
 };
 const PRESERVE = ['name', 'rights']; // 브랜드명·저작권 표기 보존
 

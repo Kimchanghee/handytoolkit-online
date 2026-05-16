@@ -2,7 +2,6 @@
 
 import { useState, useMemo } from 'react';
 import { useTranslations } from 'next-intl';
-import AdsterraSlot from '@/components/AdsterraSlot';
 
 const SAMPLE_JWT =
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c';
@@ -99,8 +98,6 @@ export default function JwtDecoder() {
             : `✓ Token valid (expires in ${formatMs(expCheck.remainingMs)})`}
         </div>
       )}
-
-      <AdsterraSlot type="banner" width={728} height={90} />
 
       <div className="grid gap-4 md:grid-cols-2">
         <Section

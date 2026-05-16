@@ -2,7 +2,6 @@
 
 import { useState, useMemo } from 'react';
 import { useTranslations } from 'next-intl';
-import AdsterraSlot from '@/components/AdsterraSlot';
 
 interface RGB { r: number; g: number; b: number; a: number }
 interface HSL { h: number; s: number; l: number; a: number }
@@ -173,8 +172,6 @@ export default function ColorConverter() {
           </div>
         </div>
       </div>
-
-      <AdsterraSlot type="banner" width={728} height={90} />
 
       <div className="grid gap-2">
         {Object.entries(css).map(([key, value]) => (

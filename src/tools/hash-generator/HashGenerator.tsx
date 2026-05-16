@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
-import AdsterraSlot from '@/components/AdsterraSlot';
 
 type Algo = 'SHA-1' | 'SHA-256' | 'SHA-384' | 'SHA-512' | 'MD5';
 
@@ -97,8 +96,6 @@ export default function HashGenerator() {
           {text.length} chars · {new Blob([text]).size} bytes
         </div>
       </div>
-
-      <AdsterraSlot type="banner" width={728} height={90} />
 
       <div className="grid gap-3">
         {(['MD5', 'SHA-1', 'SHA-256', 'SHA-384', 'SHA-512'] as Algo[]).map((algo) => (
