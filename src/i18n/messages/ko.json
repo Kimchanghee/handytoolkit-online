@@ -2,7 +2,7 @@
   "site": {
     "name": "HandyTools",
     "tagline": "필요한 모든 도구를 한곳에서",
-    "description": "이미지·PDF·텍스트·변환·생성기 등 50개 이상의 무료 온라인 도구. 회원가입 없이 바로 사용."
+    "description": "JSON, JWT, Base64, QR, 비밀번호, UUID, 해시, 색상 변환을 바로 실행하는 무료 온라인 도구 모음입니다."
   },
   "nav": {
     "home": "홈",
@@ -20,20 +20,20 @@
     "etc": "기타"
   },
   "tools": {
-    "image-compress": {
-      "name": "이미지 압축",
-      "description": "JPEG, PNG, WebP 이미지를 화질 손실 최소화하여 압축. 100% 브라우저에서 처리되며 서버 업로드 없음.",
-      "cta": "이미지 선택"
-    },
-    "pdf-merge": {
-      "name": "PDF 합치기",
-      "description": "여러 PDF를 하나로 합치기. 드래그 앤 드롭으로 순서 조정.",
-      "cta": "PDF 선택"
-    },
     "json-format": {
       "name": "JSON 포매터",
       "description": "JSON 문법 검증 및 보기 좋게 정리. 이스케이프 자동 처리.",
       "cta": "JSON 입력"
+    },
+    "base64": {
+      "name": "Base64 인코더/디코더",
+      "description": "텍스트를 Base64로 인코딩하거나 Base64 문자열을 일반 텍스트로 복원합니다.",
+      "cta": "텍스트 입력"
+    },
+    "jwt-decode": {
+      "name": "JWT 디코더",
+      "description": "JWT 헤더와 페이로드를 브라우저 안에서 안전하게 확인합니다.",
+      "cta": "JWT 입력"
     },
     "qr-generate": {
       "name": "QR 코드 생성기",
@@ -44,6 +44,21 @@
       "name": "비밀번호 생성기",
       "description": "암호학적으로 안전한 랜덤 비밀번호 생성. 길이·문자 종류 커스터마이즈.",
       "cta": "생성"
+    },
+    "uuid-generate": {
+      "name": "UUID 생성기",
+      "description": "고유 식별자를 빠르게 생성하고 한 번에 복사합니다.",
+      "cta": "UUID 생성"
+    },
+    "hash-generate": {
+      "name": "해시 생성기",
+      "description": "텍스트의 SHA-256 해시를 브라우저에서 계산합니다.",
+      "cta": "해시 계산"
+    },
+    "color-convert": {
+      "name": "색상 변환기",
+      "description": "HEX, RGB, HSL 색상값을 서로 변환하고 미리 봅니다.",
+      "cta": "색상 입력"
     }
   },
   "ui": {

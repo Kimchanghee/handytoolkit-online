@@ -1,19 +1,23 @@
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
-import { ImageIcon, FileTextIcon, CodeIcon, RefreshCwIcon, KeyRoundIcon } from 'lucide-react';
+import { CodeIcon, KeyRoundIcon, QrCodeIcon, ShieldCheckIcon, PaletteIcon, FingerprintIcon } from 'lucide-react';
+import { TOOLS } from '@/tools/registry';
 
 interface Props {
   params: Promise<{ locale: string }>;
 }
 
-const FEATURED_TOOLS = [
-  { id: 'image-compress', category: 'image', icon: ImageIcon },
-  { id: 'pdf-merge', category: 'pdf', icon: FileTextIcon },
-  { id: 'json-format', category: 'text', icon: CodeIcon },
-  { id: 'qr-generate', category: 'generator', icon: RefreshCwIcon },
-  { id: 'password-generate', category: 'generator', icon: KeyRoundIcon },
-];
+const ICONS = {
+  'json-format': CodeIcon,
+  base64: CodeIcon,
+  'jwt-decode': ShieldCheckIcon,
+  'qr-generate': QrCodeIcon,
+  'password-generate': KeyRoundIcon,
+  'uuid-generate': FingerprintIcon,
+  'hash-generate': ShieldCheckIcon,
+  'color-convert': PaletteIcon,
+} as const;
 
 export default async function Home({ params }: Props) {
   const { locale } = await params;
@@ -34,7 +38,7 @@ function HomeContent({ locale }: { locale: string }) {
           </Link>
           <nav className="flex items-center gap-4 text-sm">
             <Link href={`/${locale}/tools`}>{t('nav.tools')}</Link>
-            <Link href={`/${locale}/categories`}>{t('nav.categories')}</Link>
+            <Link href={`/${locale}/tools#categories`}>{t('nav.categories')}</Link>
           </nav>
         </div>
       </header>
@@ -58,10 +62,12 @@ function HomeContent({ locale }: { locale: string }) {
       <section className="container mx-auto max-w-6xl px-4 py-12">
         <h2 className="mb-6 text-2xl font-semibold">{t('nav.tools')}</h2>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {FEATURED_TOOLS.map(({ id, category, icon: Icon }) => (
+          {TOOLS.map(({ id, slug }) => {
+            const Icon = ICONS[id as keyof typeof ICONS] || CodeIcon;
+            return (
             <Link
               key={id}
-              href={`/${locale}/tools/${id}`}
+              href={`/${locale}/tools/${slug}`}
               className="group rounded-xl border bg-white p-6 transition hover:border-emerald-400 hover:shadow-lg"
             >
               <Icon className="h-8 w-8 text-emerald-600" />
@@ -70,7 +76,8 @@ function HomeContent({ locale }: { locale: string }) {
               </h3>
               <p className="mt-1 text-sm text-slate-600">{t(`tools.${id}.description`)}</p>
             </Link>
-          ))}
+            );
+          })}
         </div>
       </section>
 
