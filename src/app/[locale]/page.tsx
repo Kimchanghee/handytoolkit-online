@@ -55,6 +55,27 @@ function HomeContent({ locale }: { locale: string }) {
             <span className="rounded-full bg-emerald-100 px-3 py-1 text-emerald-700">{t('ui.noSignup')}</span>
             <span className="rounded-full bg-emerald-100 px-3 py-1 text-emerald-700">{t('ui.browserOnly')}</span>
           </div>
+          <form
+            action={`/${locale}/tools`}
+            className="mx-auto mt-8 flex max-w-2xl flex-col gap-3 rounded-2xl border bg-white p-3 shadow-sm sm:flex-row"
+          >
+            <label className="sr-only" htmlFor="tool-search">
+              Search tools
+            </label>
+            <input
+              id="tool-search"
+              name="q"
+              type="search"
+              placeholder="JSON, QR, password, hash..."
+              className="min-h-11 flex-1 rounded-xl border border-slate-200 px-4 text-sm outline-none focus:border-emerald-500"
+            />
+            <button
+              type="submit"
+              className="min-h-11 rounded-xl bg-emerald-600 px-5 text-sm font-semibold text-white transition hover:bg-emerald-700"
+            >
+              Open tools
+            </button>
+          </form>
         </div>
       </section>
 
