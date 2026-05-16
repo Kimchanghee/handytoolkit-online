@@ -22,9 +22,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     metadataBase: new URL(baseUrl),
-    title: { default: `${t('name')} ??${t('tagline')}`, template: `%s | ${t('name')}` },
+    title: { default: `${t('name')} - ${t('tagline')}`, template: `%s | ${t('name')}` },
     description: t('description'),
-    keywords: ['online tools', 'free tools', 'JSON formatter', 'QR generator', 'password generator', 'developer tools', '臾대즺 ?꾧뎄', '?⑤씪???꾧뎄'],
+    keywords: ['online tools', 'free tools', 'JSON formatter', 'QR generator', 'password generator', 'developer tools', '무료 도구', '온라인 도구'],
     alternates: {
       canonical: `/${locale}`,
       languages: Object.fromEntries(locales.map((l) => [l, `/${l}`])),
@@ -62,7 +62,7 @@ export default async function LocaleLayout({ children, params }: Props) {
   const { locale } = await params;
   if (!locales.includes(locale as Locale)) notFound();
   const messages = await getMessages();
-  // JSON-LD 援ъ“???곗씠??(SEO + AEO ?듭떖)
+  // Keep structured data aligned with the currently working tool set.
   const ldJson = {
     '@context': 'https://schema.org',
     '@graph': [
@@ -72,7 +72,7 @@ export default async function LocaleLayout({ children, params }: Props) {
         name: 'HandyToolkit',
         url: 'https://handytoolkit.online',
         logo: 'https://handytoolkit.online/logo.png',
-        description: '38+ free browser-based developer and designer tools.',
+        description: 'Free browser-based JSON, JWT, Base64, QR, password, UUID, hash, and color tools.',
       },
       {
         '@type': 'WebSite',
