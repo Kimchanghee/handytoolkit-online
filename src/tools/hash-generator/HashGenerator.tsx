@@ -102,14 +102,14 @@ export default function HashGenerator() {
           <div key={algo} className="rounded-xl border bg-white p-4">
             <div className="mb-2 flex items-center justify-between">
               <span className="font-semibold">{algo}</span>
-              {results[algo] && (
-                <button
-                  onClick={() => copy(algo, results[algo])}
-                  className="rounded bg-slate-700 px-3 py-1 text-xs text-white hover:bg-slate-800"
-                >
-                  {copiedAlgo === algo ? t('copied') : t('copy')}
-                </button>
-              )}
+              <button
+                type="button"
+                onClick={() => results[algo] && copy(algo, results[algo])}
+                disabled={!results[algo]}
+                className="rounded bg-slate-700 px-3 py-1 text-xs text-white hover:bg-slate-800 disabled:cursor-not-allowed disabled:bg-slate-300"
+              >
+                {copiedAlgo === algo ? t('copied') : t('copy')}
+              </button>
             </div>
             <code className="block break-all font-mono text-xs text-slate-700">
               {results[algo] || '...'}
