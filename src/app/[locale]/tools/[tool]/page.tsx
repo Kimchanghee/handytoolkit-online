@@ -50,6 +50,81 @@ const TOOL_COMPONENTS: Record<string, ReturnType<typeof nextDynamic>> = {
   'jwt-decoder': nextDynamic(() => import('@/tools/jwt-decoder/JwtDecoder')),
 };
 
+const TOOL_GUIDES: Record<string, { summary: string; steps: string[]; checks: string[] }> = {
+  'json-formatter': {
+    summary: 'Use this page when a JSON API response, config file, webhook payload, or pasted log needs to be cleaned up before you copy it into code or documentation.',
+    steps: [
+      'Paste the raw JSON into the editor, then check whether the formatted output keeps the same keys and nested arrays.',
+      'If parsing fails, start from the first highlighted character and look for missing quotes, trailing commas, or copied HTML entities.',
+      'After formatting, collapse large arrays mentally by section so you can compare payload shape without losing the original data.'
+    ],
+    checks: ['No data is uploaded to a server.', 'Useful for API debugging, config review, and support tickets.', 'Keep secrets out of screenshots after formatting.']
+  },
+  'base64-encoder-decoder': {
+    summary: 'Use this converter for safe text snippets, test fixtures, JWT segments, data URI checks, and API examples that need quick Base64 encoding or decoding.',
+    steps: [
+      'Choose encode when you have plain text and need a Base64 string for a test payload.',
+      'Choose decode when you receive a Base64 value and need to confirm the readable text before using it.',
+      'For binary files, verify the source application generated the Base64 correctly before pasting large content.'
+    ],
+    checks: ['Runs in the browser only.', 'Handles short text and developer snippets best.', 'Decoded private tokens should not be shared publicly.']
+  },
+  'jwt-decoder': {
+    summary: 'Use this decoder to inspect JWT headers and payload claims before debugging authentication, expiry, audience, issuer, or role problems.',
+    steps: [
+      'Paste the token and compare exp, iat, aud, iss, and role claims against the application you are testing.',
+      'Do not treat decoded text as proof that a token is valid; signature verification still belongs in your backend.',
+      'If the payload looks wrong, regenerate the token from the identity provider instead of editing claims by hand.'
+    ],
+    checks: ['Decoding stays local.', 'Great for expiry and audience checks.', 'Never paste production admin tokens into shared chats.']
+  },
+  'qr-code-generator': {
+    summary: 'Use this generator for URLs, Wi-Fi details, event check-in links, small contact cards, and labels that need a scannable QR code.',
+    steps: [
+      'Enter the final URL or text exactly as the scanner should open it.',
+      'Test the QR on a phone before printing, especially when the destination includes tracking parameters.',
+      'Use a short URL when the code becomes too dense for small labels or low-quality printers.'
+    ],
+    checks: ['Works without signup.', 'Good for posters, packaging, and internal operations.', 'Test scan distance before publishing.']
+  },
+  'password-generator': {
+    summary: 'Use this generator when you need a new password for a manager, test account, shared lab environment, or temporary credential rotation.',
+    steps: [
+      'Pick a length that matches the site policy, then include symbols only when the target service accepts them cleanly.',
+      'Copy the result directly into a password manager rather than storing it in notes or chat.',
+      'Regenerate for every account; do not reuse a strong password across multiple services.'
+    ],
+    checks: ['Random generation happens locally.', 'Longer passwords beat clever patterns.', 'Store the final value in a password manager.']
+  },
+  'uuid-generator': {
+    summary: 'Use this generator for database seed IDs, test records, request correlation IDs, local fixtures, and quick examples in API documentation.',
+    steps: [
+      'Generate a fresh ID for each object that should remain distinct in logs or fixtures.',
+      'Use UUIDs for identifiers, not for secrets; they are unique labels, not authentication tokens.',
+      'When pasting into code, keep the same casing and hyphen layout expected by your system.'
+    ],
+    checks: ['Good for test data and logs.', 'Not a replacement for secure tokens.', 'Copy one ID per entity.']
+  },
+  'hash-generator': {
+    summary: 'Use this page to compare checksums, create quick SHA digests, verify pasted text integrity, or document a deterministic fingerprint.',
+    steps: [
+      'Paste the exact text, including spaces and line breaks, because even one hidden character changes the digest.',
+      'Use SHA-256 or SHA-512 for modern integrity checks; keep MD5 only for legacy comparison.',
+      'Copy the digest and compare it with the value from your build log, vendor page, or API response.'
+    ],
+    checks: ['Hashes update as you type.', 'Whitespace matters.', 'Hashing is not encryption and cannot recover the original text.']
+  },
+  'color-converter': {
+    summary: 'Use this converter to move between HEX, RGB, and HSL while checking whether a color remains readable in UI tokens, charts, and design notes.',
+    steps: [
+      'Paste a HEX value from a design file or browser inspector and compare the generated RGB/HSL values.',
+      'Use HSL when you need lighter or darker variants while keeping the same hue.',
+      'Before shipping a UI color, check it against real text and background combinations.'
+    ],
+    checks: ['Useful for CSS tokens and design QA.', 'Preview before copying.', 'Avoid using color alone to convey status.']
+  }
+};
+
 export default async function ToolPage({ params }: Props) {
   const { locale, tool } = await params;
   if (!locales.includes(locale as Locale)) notFound();
@@ -59,6 +134,7 @@ export default async function ToolPage({ params }: Props) {
   if (!meta) notFound();
 
   const Component = TOOL_COMPONENTS[tool];
+  const guide = TOOL_GUIDES[tool];
   const t = await getTranslations({ locale });
 
   // 같은 카테고리 다른 도구 추천 (PV 체인용)
@@ -112,6 +188,28 @@ export default async function ToolPage({ params }: Props) {
               ← Browse other tools
             </Link>
           </div>
+        )}
+
+        {guide && (
+          <section className="mt-10 grid gap-4 rounded-xl border bg-white p-6 text-slate-700 md:grid-cols-[1.2fr_1fr]">
+            <div>
+              <h2 className="text-xl font-semibold text-slate-950">How to use this tool well</h2>
+              <p className="mt-3 leading-7">{guide.summary}</p>
+              <ol className="mt-4 list-decimal space-y-2 pl-5 text-sm leading-6">
+                {guide.steps.map((step) => (
+                  <li key={step}>{step}</li>
+                ))}
+              </ol>
+            </div>
+            <aside className="rounded-lg bg-emerald-50 p-4">
+              <h3 className="font-semibold text-emerald-900">Before you copy the result</h3>
+              <ul className="mt-3 space-y-2 text-sm leading-6 text-emerald-950">
+                {guide.checks.map((check) => (
+                  <li key={check}>- {check}</li>
+                ))}
+              </ul>
+            </aside>
+          </section>
         )}
 
         {/* 관련 도구 */}
