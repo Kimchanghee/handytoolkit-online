@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description: 'Free browser-based developer and productivity tools',
 };
 
-const GA_ID = 'G-G0YE8ZCN66';
+const GA_ID = 'G-3LYD80FR0D';
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (

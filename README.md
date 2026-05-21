@@ -9,7 +9,7 @@ Free browser-based utility hub for JSON formatting, QR generation, password gene
 - Tailwind CSS
 - next-intl
 - Browser-only tool execution where possible
-- GA4 `G-G0YE8ZCN66`
+- GA4 `G-3LYD80FR0D`
 
 ## User Experience Policy
 
