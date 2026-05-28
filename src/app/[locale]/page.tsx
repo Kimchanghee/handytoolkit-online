@@ -3,7 +3,7 @@ import { useTranslations } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
 import { CodeIcon, KeyRoundIcon, QrCodeIcon, ShieldCheckIcon, PaletteIcon, FingerprintIcon } from 'lucide-react';
 import { TOOLS } from '@/tools/registry';
-import SafeInlineAdsterra from '@/components/SafeInlineAdsterra';
+import SafeInlineSponsored from '@/components/SafeInlineSponsored';
 
 interface Props {
   params: Promise<{ locale: string }>;
@@ -109,7 +109,7 @@ function HomeContent({ locale }: { locale: string }) {
           <p>{t('footer.rights')}</p>
         </div>
       </footer>
-          <SafeInlineAdsterra placement="homepage-inline" />
+          <SafeInlineSponsored placement="homepage-inline" />
     </main>
   );
 }
