@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
+import SiteFooter from '@/components/SiteFooter';
 import { CATEGORIES, getToolsByCategory, type ToolCategory } from '@/tools/registry';
 
 interface Props {
@@ -56,6 +57,7 @@ function ToolsIndex({ locale }: { locale: string }) {
           ))}
         </div>
       </section>
+      <SiteFooter locale={locale} />
     </main>
   );
 }

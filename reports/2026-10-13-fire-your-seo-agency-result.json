@@ -1,0 +1,287 @@
+{
+  "domain": "handytoolkit.online",
+  "applied_on": "2026-10-13",
+  "skill": {
+    "repo": "https://github.com/leopard627/fire-your-seo-agency",
+    "commit": "5f7249f",
+    "vendored_at": ".agents/skills/fire-your-seo-agency"
+  },
+  "before": {
+    "lanes": {
+      "SEO": "WARN",
+      "AEO": "FAIL",
+      "GEO": "WARN",
+      "LLMO": "FAIL",
+      "NEO": "FAIL"
+    },
+    "crawler_view_home": {
+      "bodyChars": 639,
+      "title": "HandyTools - 필요한 모든 도구를 한곳에서",
+      "jsonLd": [],
+      "note": "JSON-LD was injected with next/script afterInteractive, so it was absent from the HTML crawlers receive; it also carried an invented aggregateRating (4.8/250) and a SearchAction to a non-existent /search"
+    }
+  },
+  "after": {
+    "lanes": {
+      "SEO": "OK",
+      "AEO": "WARN",
+      "GEO": "OK",
+      "LLMO": "OK",
+      "NEO": "WARN"
+    },
+    "note": "real next build served with next start on 127.0.0.1; live re-audit needed after deploy",
+    "site": {
+      "robots": true,
+      "robotsSitemapRef": true,
+      "robotsDisallowAll": false,
+      "aiBotsExplicit": [
+        "GPTBot",
+        "OAI-SearchBot",
+        "ChatGPT-User",
+        "ClaudeBot",
+        "Claude-SearchBot",
+        "Claude-User",
+        "PerplexityBot",
+        "Perplexity-User",
+        "Google-Extended",
+        "Yeti",
+        "Bingbot"
+      ],
+      "sitemap": true,
+      "sitemapUrls": 20,
+      "llmsTxt": true,
+      "llmsLinks": 13,
+      "missingPageStatus": 404
+    },
+    "pages": {
+      "/ko": {
+        "status": 200,
+        "xRobotsTag": "",
+        "robotsMeta": "index, follow",
+        "noindex": false,
+        "title": "HandyTools | JSON·JWT·QR·비밀번호 무료 온라인 도구 8종",
+        "titleLen": 42,
+        "descLen": 110,
+        "desc": "JSON 포매터, JWT 디코더, Base64, QR 코드, 비밀번호, UUID, SHA-256 해시, 색상 변환 8가지 개발·생산성 도구를 회원가입 없이 무료로 쓰세요. 브라우저에서만 처리됩니다.",
+        "canonical": "https://handytoolkit.online/ko",
+        "og": true,
+        "h1": 1,
+        "bodyChars": 709,
+        "ld": [
+          "Organization",
+          "WebSite",
+          "ItemList"
+        ],
+        "faq": null,
+        "hreflang": 0,
+        "naverVerify": false,
+        "bingVerify": false,
+        "gscVerify": false,
+        "trustLinks": [
+          "about",
+          "contact",
+          "privacy",
+          "terms"
+        ]
+      },
+      "/ko/tools/json-formatter": {
+        "status": 200,
+        "xRobotsTag": "",
+        "robotsMeta": "index, follow",
+        "noindex": false,
+        "title": "JSON 포매터·검증기 | 붙여넣기만 하면 바로 정리 - HandyTools",
+        "titleLen": 42,
+        "descLen": 92,
+        "desc": "JSON 문법을 검증하고 들여쓰기로 보기 좋게 정리합니다. API 응답, 설정 파일, 웹훅 페이로드를 붙여넣으면 브라우저 안에서만 처리되며 서버로 전송되지 않습니다.",
+        "canonical": "https://handytoolkit.online/ko/tools/json-formatter",
+        "og": true,
+        "h1": 1,
+        "bodyChars": 1414,
+        "ld": [
+          "Organization",
+          "WebSite",
+          "SoftwareApplication",
+          "FAQPage",
+          "BreadcrumbList"
+        ],
+        "faq": {
+          "total": 4,
+          "visible": 4
+        },
+        "hreflang": 0,
+        "naverVerify": false,
+        "bingVerify": false,
+        "gscVerify": false,
+        "trustLinks": [
+          "about",
+          "contact",
+          "privacy",
+          "terms"
+        ]
+      },
+      "/ko/tools/jwt-decoder": {
+        "status": 200,
+        "xRobotsTag": "",
+        "robotsMeta": "index, follow",
+        "noindex": false,
+        "title": "JWT 디코더 | 토큰 헤더·페이로드 확인 - HandyTools",
+        "titleLen": 36,
+        "descLen": 101,
+        "desc": "JWT 토큰의 헤더와 페이로드(exp, iat, aud, iss 등 클레임)를 브라우저 안에서 안전하게 확인합니다. 서명 검증은 하지 않으며 입력한 토큰은 서버로 전송되지 않습니다.",
+        "canonical": "https://handytoolkit.online/ko/tools/jwt-decoder",
+        "og": true,
+        "h1": 1,
+        "bodyChars": 1682,
+        "ld": [
+          "Organization",
+          "WebSite",
+          "SoftwareApplication",
+          "FAQPage",
+          "BreadcrumbList"
+        ],
+        "faq": {
+          "total": 4,
+          "visible": 4
+        },
+        "hreflang": 0,
+        "naverVerify": false,
+        "bingVerify": false,
+        "gscVerify": false,
+        "trustLinks": [
+          "about",
+          "contact",
+          "privacy",
+          "terms"
+        ]
+      },
+      "/ko/privacy": {
+        "status": 200,
+        "xRobotsTag": "",
+        "robotsMeta": "index, follow",
+        "noindex": false,
+        "title": "개인정보 처리방침 | HandyTools | HandyTools",
+        "titleLen": 35,
+        "descLen": 99,
+        "desc": "HandyTools가 입력값, 방문 통계(Google Analytics), 광고와 제휴 링크를 어떻게 다루는지 안내합니다. 도구에 입력한 내용은 브라우저 밖으로 나가지 않습니다.",
+        "canonical": "https://handytoolkit.online/ko/privacy",
+        "og": true,
+        "h1": 1,
+        "bodyChars": 882,
+        "ld": [
+          "Organization",
+          "WebSite",
+          "WebPage"
+        ],
+        "faq": null,
+        "hreflang": 0,
+        "naverVerify": false,
+        "bingVerify": false,
+        "gscVerify": false,
+        "trustLinks": [
+          "about",
+          "contact",
+          "privacy",
+          "terms"
+        ]
+      },
+      "/ko/terms": {
+        "status": 200,
+        "xRobotsTag": "",
+        "robotsMeta": "index, follow",
+        "noindex": false,
+        "title": "이용약관 | HandyTools | HandyTools",
+        "titleLen": 30,
+        "descLen": 88,
+        "desc": "HandyTools 이용약관: 도구는 있는 그대로 제공되며 결과의 정확성과 특정 목적 적합성을 보증하지 않습니다. 제3자 링크와 약관 변경 안내를 포함합니다.",
+        "canonical": "https://handytoolkit.online/ko/terms",
+        "og": true,
+        "h1": 1,
+        "bodyChars": 573,
+        "ld": [
+          "Organization",
+          "WebSite",
+          "WebPage"
+        ],
+        "faq": null,
+        "hreflang": 0,
+        "naverVerify": false,
+        "bingVerify": false,
+        "gscVerify": false,
+        "trustLinks": [
+          "about",
+          "contact",
+          "privacy",
+          "terms"
+        ]
+      },
+      "/ko/contact": {
+        "status": 200,
+        "xRobotsTag": "",
+        "robotsMeta": "index, follow",
+        "noindex": false,
+        "title": "문의 | HandyTools | HandyTools",
+        "titleLen": 28,
+        "descLen": 62,
+        "desc": "HandyTools 도구의 오류 제보와 문의는 이메일로 받습니다. 연락처와 보안 취약점 제보 방법을 안내합니다.",
+        "canonical": "https://handytoolkit.online/ko/contact",
+        "og": true,
+        "h1": 1,
+        "bodyChars": 320,
+        "ld": [
+          "Organization",
+          "WebSite",
+          "ContactPage"
+        ],
+        "faq": null,
+        "hreflang": 0,
+        "naverVerify": false,
+        "bingVerify": false,
+        "gscVerify": false,
+        "trustLinks": [
+          "about",
+          "contact",
+          "privacy",
+          "terms"
+        ]
+      }
+    }
+  },
+  "changed": [
+    "JSON-LD now server-rendered as real <script type=application/ld+json>; removed fake aggregateRating and SearchAction; Organization/WebSite with stable @id",
+    "per-tool Korean titles/descriptions, direct answer, 4 visible FAQs equal to FAQPage JSON-LD, SoftwareApplication + BreadcrumbList JSON-LD (facts match src/tools implementations: hash MD5/SHA-1/256/384/512, UUID v4/v7/nil, QR PNG/SVG)",
+    "home title/description rewritten + ItemList JSON-LD",
+    "new /ko/privacy, /ko/terms, /ko/contact (only published address hello@handytoolkit.online), footer links on all pages",
+    "robots: added Claude-SearchBot, Claude-User, Bingbot, Yeti; sitemap rebuilt (20 real URLs, lastmod, no discover.html); removed conflicting static public/robots.txt and public/sitemap.xml",
+    "llms.txt and llms-full.txt rewritten truthfully (removed owned-sites cross-link list, false claims about URL encoder, CDN, hreflang EN/KO/JA and unpublished support@ address)",
+    "discover.html set noindex"
+  ],
+  "not_done": [
+    {
+      "item": "Ad logic / Adsterra keys in .env.production",
+      "reason": "out of scope; untouched and not printed; committed secrets should still be removed from git history by the owner"
+    },
+    {
+      "item": "Static export zip",
+      "reason": "site is output: standalone with SSR (middleware, force-dynamic tool route); static export is not possible without changing behaviour"
+    },
+    {
+      "item": "Home FAQ/direct answer",
+      "reason": "home is a listing page"
+    },
+    {
+      "item": "OG image",
+      "reason": "/og-image.png is referenced but no asset exists in repo"
+    }
+  ],
+  "user_action_required": [
+    "Deploy path is unknown from the repo (CDK in infrastructure/, live host is behind Cloudflare). Standalone bundle: ~/seo-tools/releases/handytoolkit.online-standalone.zip (run: node server.js, PORT env). Tell which host runs it, or deploy main there",
+    "Register Naver Search Advisor, Bing Webmaster, GSC and submit sitemap"
+  ],
+  "remeasure_on": "2026-10-27",
+  "measure_plan": [
+    "GSC impressions/clicks 28d",
+    "Naver Search Advisor",
+    "AI citation Q&A 5-10 queries",
+    "AI crawler visits"
+  ]
+}

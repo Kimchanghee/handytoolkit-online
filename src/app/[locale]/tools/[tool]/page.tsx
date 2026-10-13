@@ -5,6 +5,8 @@ import nextDynamic from 'next/dynamic';
 import Link from 'next/link';
 import { TOOLS, getToolBySlug } from '@/tools/registry';
 import { locales, type Locale } from '@/i18n/config';
+import SiteFooter from '@/components/SiteFooter';
+import { ORG_ID, SEO_DATE, SITE, SITE_ID, TOOL_SEO, jsonLdScript } from '@/lib/seo';
 
 interface Props {
   params: Promise<{ locale: string; tool: string }>;
@@ -26,6 +28,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   } catch {
     name = meta.slug.replace(/-/g, ' ');
     description = `Free online ${name}. Browser-only, no signup required.`;
+  }
+  const seo = TOOL_SEO[tool];
+  if (seo) {
+    return {
+      title: { absolute: seo.title },
+      description: seo.description,
+      alternates: { canonical: `/${locale}/tools/${tool}`, languages: Object.fromEntries(locales.map((l) => [l, `/${l}/tools/${tool}`])) },
+      openGraph: { title: seo.title, description: seo.description, url: `${baseUrl}/${locale}/tools/${tool}`, type: 'website' },
+      twitter: { card: 'summary_large_image', title: seo.title, description: seo.description },
+    };
   }
   return {
     title: name,
@@ -147,8 +159,20 @@ export default async function ToolPage({ params }: Props) {
     toolDesc = t(`tools.${meta.id}.description`);
   } catch {}
 
+  const seo = TOOL_SEO[tool];
+  const pageUrl = `${SITE}/${locale}/tools/${tool}`;
+  const ld = seo ? {
+    '@context': 'https://schema.org',
+    '@graph': [
+      { '@type': 'SoftwareApplication', '@id': `${pageUrl}#app`, name: toolName, url: pageUrl, description: seo.description, applicationCategory: 'UtilitiesApplication', operatingSystem: 'Any (web browser)', inLanguage: 'ko', isAccessibleForFree: true, offers: { '@type': 'Offer', price: '0', priceCurrency: 'KRW' }, isPartOf: { '@id': SITE_ID }, publisher: { '@id': ORG_ID }, dateModified: SEO_DATE },
+      { '@type': 'FAQPage', '@id': `${pageUrl}#faq`, url: pageUrl, inLanguage: 'ko', mainEntity: seo.faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) },
+      { '@type': 'BreadcrumbList', itemListElement: [ { '@type': 'ListItem', position: 1, name: 'HandyTools', item: `${SITE}/${locale}` }, { '@type': 'ListItem', position: 2, name: '도구 목록', item: `${SITE}/${locale}/tools` }, { '@type': 'ListItem', position: 3, name: toolName, item: pageUrl } ] },
+    ],
+  } : null;
+
   return (
     <main className="min-h-screen bg-slate-50">
+      {ld && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLdScript(ld) }} />}
       <header className="border-b bg-white">
         <div className="container mx-auto flex max-w-6xl items-center justify-between p-4">
           <Link href={`/${locale}`} className="text-2xl font-bold text-emerald-600">
@@ -162,7 +186,7 @@ export default async function ToolPage({ params }: Props) {
 
       <div className="container mx-auto max-w-6xl px-4 py-8">
         <h1 className="text-3xl font-bold tracking-tight">{toolName}</h1>
-        {toolDesc && <p className="mt-2 text-slate-600">{toolDesc}</p>}
+        {seo ? <p className="mt-2 text-slate-600">{seo.answer}</p> : toolDesc && <p className="mt-2 text-slate-600">{toolDesc}</p>}
 
         <div className="mt-2 flex flex-wrap gap-2 text-xs">
           {meta.clientOnly && (
@@ -212,6 +236,20 @@ export default async function ToolPage({ params }: Props) {
           </section>
         )}
 
+        {seo && (
+          <section id="faq" className="mt-10 rounded-xl border bg-white p-6 text-slate-700">
+            <h2 className="text-xl font-semibold text-slate-950">자주 묻는 질문</h2>
+            <dl className="mt-4 space-y-4">
+              {seo.faq.map(([q, a]) => (
+                <div key={q}>
+                  <dt className="font-semibold text-slate-900">{q}</dt>
+                  <dd className="mt-1 text-sm leading-6">{a}</dd>
+                </div>
+              ))}
+            </dl>
+          </section>
+        )}
+
         {/* 관련 도구 */}
         {related.length > 0 && (
           <section className="mt-12">
@@ -238,6 +276,7 @@ export default async function ToolPage({ params }: Props) {
         )}
 
       </div>
+      <SiteFooter locale={locale} />
     </main>
   );
 }

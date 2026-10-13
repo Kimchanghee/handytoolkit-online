@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
-import Script from 'next/script';
+import { CONTACT_EMAIL, HOME_SEO, ORG_ID, SITE, SITE_ID, jsonLdScript } from '@/lib/seo';
 import { locales, type Locale } from '@/i18n/config';
 import './globals.css';
 
@@ -22,16 +22,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     metadataBase: new URL(baseUrl),
-    title: { default: `${t('name')} - ${t('tagline')}`, template: `%s | ${t('name')}` },
-    description: t('description'),
+    title: { default: HOME_SEO.title, template: `%s | ${t('name')}` },
+    description: HOME_SEO.description,
     keywords: ['online tools', 'free tools', 'JSON formatter', 'QR generator', 'password generator', 'developer tools', '무료 도구', '온라인 도구'],
     alternates: {
       canonical: `/${locale}`,
       languages: Object.fromEntries(locales.map((l) => [l, `/${l}`])),
     },
     openGraph: {
-      title: t('name'),
-      description: t('description'),
+      title: HOME_SEO.title,
+      description: HOME_SEO.description,
       url: `${baseUrl}/${locale}`,
       siteName: t('name'),
       locale,
@@ -40,8 +40,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     twitter: {
       card: 'summary_large_image',
-      title: t('name'),
-      description: t('description'),
+      title: HOME_SEO.title,
+      description: HOME_SEO.description,
       images: ['/og-image.png'],
     },
     robots: {
@@ -62,56 +62,31 @@ export default async function LocaleLayout({ children, params }: Props) {
   const { locale } = await params;
   if (!locales.includes(locale as Locale)) notFound();
   const messages = await getMessages();
-  // Keep structured data aligned with the currently working tool set.
   const ldJson = {
     '@context': 'https://schema.org',
     '@graph': [
       {
         '@type': 'Organization',
-        '@id': 'https://handytoolkit.online#org',
+        '@id': ORG_ID,
         name: 'HandyToolkit',
-        url: 'https://handytoolkit.online',
-        logo: 'https://handytoolkit.online/logo.png',
-        description: 'Free browser-based JSON, JWT, Base64, QR, password, UUID, hash, and color tools.',
+        url: SITE + '/',
+        email: CONTACT_EMAIL,
+        description: 'JSON, JWT, Base64, QR, 비밀번호, UUID, 해시, 색상 변환 도구를 브라우저에서 무료로 제공합니다.',
       },
       {
         '@type': 'WebSite',
-        '@id': 'https://handytoolkit.online#site',
-        name: 'HandyToolkit',
-        url: 'https://handytoolkit.online',
-        publisher: { '@id': 'https://handytoolkit.online#org' },
+        '@id': SITE_ID,
+        name: 'HandyTools',
+        url: SITE + '/',
         inLanguage: 'ko-KR',
-        potentialAction: {
-          '@type': 'SearchAction',
-          target: 'https://handytoolkit.online/search?q={search_term_string}',
-          'query-input': 'required name=search_term_string',
-        },
-      },
-      {
-        '@type': 'WebApplication',
-        name: 'HandyToolkit Online Tools',
-        applicationCategory: 'UtilitiesApplication',
-        operatingSystem: 'Any (browser)',
-        url: 'https://handytoolkit.online',
-        offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-        aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.8', ratingCount: '250' },
-        featureList: [
-          'JSON formatter & validator', 'QR code generator', 'Password generator',
-          'Base64 encoder/decoder', 'UUID v4/v7 generator', 'Hash (MD5/SHA)',
-          'Color converter', 'JWT decoder',
-        ],
+        publisher: { '@id': ORG_ID },
       },
     ],
   };
 
   return (
     <>
-      <Script
-        id="handytoolkit-ldjson"
-        type="application/ld+json"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(ldJson) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLdScript(ldJson) }} />
       <NextIntlClientProvider locale={locale} messages={messages}>
         {children}
       </NextIntlClientProvider>

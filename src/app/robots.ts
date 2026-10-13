@@ -7,7 +7,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: [
       { userAgent: '*', allow: '/', disallow: ['/api/', '/_next/'] },
       // AI 크롤러 명시 허용 (AEO/GEO 핵심)
-      ...['GPTBot', 'ChatGPT-User', 'OAI-SearchBot', 'ClaudeBot', 'Claude-Web', 'anthropic-ai',
+      ...['GPTBot', 'ChatGPT-User', 'OAI-SearchBot', 'ClaudeBot', 'Claude-SearchBot', 'Claude-User', 'Claude-Web', 'anthropic-ai', 'Bingbot', 'Yeti',
           'PerplexityBot', 'Perplexity-User', 'Google-Extended', 'Bytespider', 'CCBot',
           'meta-externalagent', 'Applebot-Extended'].map((ua) => ({
         userAgent: ua, allow: '/',

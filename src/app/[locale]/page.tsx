@@ -4,6 +4,8 @@ import { setRequestLocale } from 'next-intl/server';
 import { CodeIcon, KeyRoundIcon, QrCodeIcon, ShieldCheckIcon, PaletteIcon, FingerprintIcon } from 'lucide-react';
 import { TOOLS } from '@/tools/registry';
 import SafeInlineSponsored from '@/components/SafeInlineSponsored';
+import SiteFooter from '@/components/SiteFooter';
+import { SITE, SITE_ID, jsonLdScript } from '@/lib/seo';
 
 interface Props {
   params: Promise<{ locale: string }>;
@@ -103,12 +105,19 @@ function HomeContent({ locale }: { locale: string }) {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t bg-white py-8">
-        <div className="container mx-auto max-w-6xl px-4 text-center text-sm text-slate-500">
-          <p>{t('footer.rights')}</p>
-        </div>
-      </footer>
+      <SiteFooter locale={locale} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: jsonLdScript({
+            '@context': 'https://schema.org',
+            '@type': 'ItemList',
+            name: 'HandyTools 도구 목록',
+            isPartOf: { '@id': SITE_ID },
+            itemListElement: TOOLS.map((tool, i) => ({ '@type': 'ListItem', position: i + 1, url: `${SITE}/${locale}/tools/${tool.slug}`, name: t(`tools.${tool.id}.name`) })),
+          }),
+        }}
+      />
           <SafeInlineSponsored placement="homepage-inline" />
     </main>
   );

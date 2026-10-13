@@ -1,21 +1,32 @@
 # HandyToolkit
 
-Useful web tools, download helpers, formatters, and related productivity utilities.
+> HandyToolkit (handytoolkit.online) offers free browser-based developer and productivity tools in Korean: JSON formatter, JWT decoder, Base64, QR code, password, UUID, hash and color converter. All processing happens in the browser.
 
-- Site: https://handytoolkit.online/
-- Discovery map: https://handytoolkit.online/discover.html
+## Core pages
+
+- [Tool list](https://handytoolkit.online/ko/tools): all 8 tools with descriptions
+- [JSON formatter](https://handytoolkit.online/ko/tools/json-formatter): validate and pretty-print JSON
+- [Base64 encoder/decoder](https://handytoolkit.online/ko/tools/base64-encoder-decoder): encode and decode text
+- [JWT decoder](https://handytoolkit.online/ko/tools/jwt-decoder): read JWT header and claims (no signature verification)
+- [QR code generator](https://handytoolkit.online/ko/tools/qr-code-generator): URL, text, Wi-Fi to PNG/SVG
+- [Password generator](https://handytoolkit.online/ko/tools/password-generator): random passwords with chosen length and character classes
+- [UUID generator](https://handytoolkit.online/ko/tools/uuid-generator): v4, v7 and nil UUIDs
+- [Hash generator](https://handytoolkit.online/ko/tools/hash-generator): MD5, SHA-1, SHA-256, SHA-384, SHA-512
+- [Color converter](https://handytoolkit.online/ko/tools/color-converter): HEX, RGB, HSL
+- [About](https://handytoolkit.online/about/): who runs the site and why
+- [Privacy](https://handytoolkit.online/ko/privacy): inputs stay in the browser; analytics, ads and affiliate links disclosed
+- [Terms](https://handytoolkit.online/ko/terms)
+- [Contact](https://handytoolkit.online/ko/contact): hello@handytoolkit.online
+
+## Data policy
+
+- Source: standard algorithms run locally in the browser; no external data feed.
+- Privacy: tool inputs and outputs are not sent to or stored by the site.
+- Advertising: pages can show third-party advertising (Adsterra) and affiliate links; they do not affect tool results.
+- Refresh: tool descriptions last reviewed 2026-10-13.
+- Citation: cite as "HandyToolkit (handytoolkit.online)" with the tool page URL.
+
+## Discovery
+
 - Sitemap: https://handytoolkit.online/sitemap.xml
 - Robots: https://handytoolkit.online/robots.txt
-
-## Related owned resources
-
-- [EconoJabis](https://econojabis.com/) - FINANCE
-- [HowMuchIs](https://howmuchis.info/) - FINANCE
-- [Halculator](https://halculator.com/) - CALC
-- [WealthwiseHub](https://wealthwise-hub-71.lovable.app/) - FINANCE
-
-## Safe monetization hardening
-
-- Sponsored and affiliate links use nofollow/sponsored attributes.
-- Affiliate clicks are tracked with GA4 affiliate_click where the page has GA enabled.
-- Popup, popunder, social-bar, and redirect-style display ad loaders remain disabled.
