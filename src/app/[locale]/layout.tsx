@@ -54,6 +54,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     verification: {
       google: process.env.GOOGLE_SITE_VERIFICATION,
+      other: { 'naver-site-verification': 'f38a47d490e8957953233d207dcf1e937a05d647' },
     },
   };
 }
