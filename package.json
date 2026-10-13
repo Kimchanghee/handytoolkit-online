@@ -11,7 +11,8 @@
     "type-check": "tsc --noEmit",
     "translate:all": "tsx scripts/translate-all.ts",
     "cdk": "cdk --app 'tsx infrastructure/cdk-app.ts'",
-    "deploy": "npm run build && npm run cdk -- deploy --all --require-approval never"
+    "deploy": "npm run build && npm run cdk -- deploy --all --require-approval never",
+    "export:static": "node scripts/export-static.mjs"
   },
   "dependencies": {
     "next": "^15.0.0",

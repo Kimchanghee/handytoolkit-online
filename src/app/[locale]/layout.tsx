@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages, getTranslations } from 'next-intl/server';
+import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { CONTACT_EMAIL, HOME_SEO, ORG_ID, SITE, SITE_ID, jsonLdScript } from '@/lib/seo';
 import { locales, type Locale } from '@/i18n/config';
@@ -63,7 +63,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function LocaleLayout({ children, params }: Props) {
   const { locale } = await params;
   if (!locales.includes(locale as Locale)) notFound();
-  const messages = await getMessages();
+  setRequestLocale(locale);
+  const messages = await getMessages({ locale });
   const ldJson = {
     '@context': 'https://schema.org',
     '@graph': [

@@ -14,6 +14,11 @@ interface Props {
 
 export const dynamic = 'force-dynamic';
 
+// Used by the static export (STATIC_EXPORT=1 scripts/export-static.mjs, which switches dynamic to force-static)
+export async function generateStaticParams() {
+  return locales.flatMap((locale) => TOOLS.map((tool) => ({ locale, tool: tool.slug })));
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, tool } = await params;
   const meta = getToolBySlug(tool);
