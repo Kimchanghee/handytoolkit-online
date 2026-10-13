@@ -35,8 +35,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: { absolute: seo.title },
       description: seo.description,
       alternates: { canonical: `/${locale}/tools/${tool}`, languages: Object.fromEntries(locales.map((l) => [l, `/${l}/tools/${tool}`])) },
-      openGraph: { title: seo.title, description: seo.description, url: `${baseUrl}/${locale}/tools/${tool}`, type: 'website' },
-      twitter: { card: 'summary_large_image', title: seo.title, description: seo.description },
+      openGraph: { title: seo.title, description: seo.description, url: `${baseUrl}/${locale}/tools/${tool}`, type: 'website', images: [{ url: "/og-image.png", width: 1200, height: 630, type: "image/png", alt: "HandyTools - 무료 온라인 도구 모음" }] },
+      twitter: { card: 'summary_large_image', title: seo.title, description: seo.description, images: [{ url: "/og-image.png", alt: "HandyTools - 무료 온라인 도구 모음" }] },
     };
   }
   return {
@@ -46,7 +46,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       canonical: `/${locale}/tools/${tool}`,
       languages: Object.fromEntries(locales.map((l) => [l, `/${l}/tools/${tool}`])),
     },
-    openGraph: { title: name, description, url: `${baseUrl}/${locale}/tools/${tool}` },
+    openGraph: { title: name, description, url: `${baseUrl}/${locale}/tools/${tool}`, images: [{ url: "/og-image.png", width: 1200, height: 630, type: "image/png", alt: "HandyTools - 무료 온라인 도구 모음" }] },
+    twitter: { card: 'summary_large_image', title: name, description, images: [{ url: "/og-image.png", alt: "HandyTools - 무료 온라인 도구 모음" }] },
   };
 }
 
